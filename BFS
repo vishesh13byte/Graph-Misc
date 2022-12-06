@@ -1,0 +1,18 @@
+        Queue<E> queue = new ArrayDeque<>();
+        queue.offer(); // starting position
+        while(!queue.isEmpty()){
+            int nodes = queue.size();
+            while(nodes > 0){
+                E cur = queue.poll();
+                if(cur == dest){
+                    return ; // return ans
+                }
+                
+                for(E next : graph.get(cur){
+                    // some condition
+                    curLevel.add(curNode.val);
+                }
+                nodes--;
+            }
+            // if want to increment steps
+        }
