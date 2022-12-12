@@ -8,7 +8,7 @@
                     return ; // return ans
                 }
                 
-                for(E next : graph.get(cur){
+                for(E next : graph.get(cur)){
                     // some condition
                     curLevel.add(curNode.val);
                 }
