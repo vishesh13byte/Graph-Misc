@@ -1,16 +1,16 @@
-        Queue<E> queue = new ArrayDeque<>();
-        queue.offer(); // starting position
-        while(!queue.isEmpty()){
-            int nodes = queue.size();
+        Queue<E> que = new ArrayDeque<>();
+        que.offer(); // starting position
+        while(!que.isEmpty()){
+            int nodes = que.size();
             while(nodes > 0){
-                E cur = queue.poll();
+                E cur = que.poll();
                 if(cur == dest){
                     return ; // return ans
                 }
                 
                 for(E next : graph.get(cur)){
                     // some condition
-                    curLevel.add(curNode.val);
+                    que.add(next);
                 }
                 nodes--;
             }
