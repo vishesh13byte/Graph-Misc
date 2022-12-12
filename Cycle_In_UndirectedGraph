@@ -1,0 +1,41 @@
+class Solution {
+    // Function to detect cycle in an undirected graph.
+    int[] vis;
+    ArrayList<ArrayList<Integer>> graph;
+    public boolean isCycle(int n, ArrayList<ArrayList<Integer>> graph) {
+        // Code here
+        this.graph = graph;
+        vis = new int[n];
+        for(int i = 0; i < n; i++){
+            if(vis[i] == 0){
+                if(bfs(i)) return true;;
+            }
+            vis[i] = 1;
+        }
+        
+        return false;
+    }
+    
+    private boolean bfs(int src){
+        Queue<int[]> queue = new ArrayDeque<>();
+        queue.offer(new int[]{src,-1}); // starting position
+        while(!queue.isEmpty()){
+            int nodes = queue.size();
+            while(nodes > 0){
+                int[] cur = queue.poll();
+                if(vis[cur[0]] == 1){
+                    return true; // return ans
+                }
+                vis[cur[0]] = 1;
+                for(int next : graph.get(cur[0])){
+                    if(next != cur[1]){
+                        if(vis[next] == 1) return true;
+                        queue.offer(new int[]{next,cur[0]});
+                    }
+                }
+                nodes--;
+            }
+        }
+        return false;
+    }
+}
